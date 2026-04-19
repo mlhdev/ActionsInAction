@@ -40,3 +40,12 @@ jobs:
         run: |
           echo "The repo ${{  github.repository }} contains the following files:"
           tree
+
+      # Set an environment variable
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "action_state=yellow" >> "$GITHUB_ENV"
+
+      - run: |
+          echo "${{ env.action_state }}" #This should output 'yellow'
